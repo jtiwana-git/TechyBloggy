@@ -1,21 +1,15 @@
-<div class="row">
-  <div class="col-auto">
-    <h2>Welcome, {{username}}!</h2>
-  </div>
-</div>
-
 <div class="row mt-4">
   <div class="col-md-6">
-    <h3>Create a New Blog:</h3>
+    <h3>Create Blog:</h3>
 
-    <form class="form new-project-form">
+    <form class="form new-blog-form">
       <div class="form-group">
         <label for="blog-title">Title:</label>
-        <input class="form-input" type="text" id="Blog-title" name="Blog-title" />
+        <input class="form-input" type="text" id="blog-title" name="blog-title" />
       </div>
       <div class="form-group">
         <label for="blog-content">Content:</label>
-        <textarea class="form-input" id="project-desc" name="blog-content"></textarea>
+        <textarea class="form-input" id="blog-content" name="blog-content"></textarea>
       </div>
       <div class="form-group">
         <button type="submit" class="btn btn-primary">Create</button>
@@ -24,13 +18,13 @@
   </div>
 
   {{#if blogs.length}}
-  <div class="col-md-6 project-list">
+  <div class="col-md-6 blog-list">
     <h3>Current blogs:</h3>
 
     {{#each blogs as |blog|}}
     <div class="row mb-2">
       <div class="col-md-8">
-        <h4><a href="/project/{{blog.id}}">{{blog.username}}</a></h4>
+        <h4><a href="/blogs/{{blog.id}}">{{blog.username}}</a></h4>
       </div>
       <div class="col-md-4">
         <button class="btn btn-sm btn-danger" data-id="{{blog.id}}">DELETE</button>
@@ -41,4 +35,4 @@
   {{/if}}
 </div>
 
-<script src="./js/profile.js"></script>
+<script src="../public/js/profile.js"></script>

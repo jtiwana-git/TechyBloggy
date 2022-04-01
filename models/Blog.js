@@ -3,7 +3,7 @@ const sequelize = require('../config/connection');
 
 class Blog extends Model {}
 
-// title, contents, created by, date created
+
 
 Blog.init(
     {

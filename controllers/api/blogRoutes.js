@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const { Blog } = require('../../models');
 const withAuth = require('../../utils/auth');
+const { route } = require('../homeRoutes');
 
 router.post('/', withAuth, async (req, res) => {
     try {
@@ -14,6 +15,26 @@ router.post('/', withAuth, async (req, res) => {
     res.status(400).json(err);
   }
 });
+
+router.put('/:id', withAuth, async (req, res) => {
+  try {
+    const blogUpdate = await Blog.update(req.body, {
+      where: {
+        id: req.params.id,
+
+      }
+    })
+    if(!blogUpdate) {
+      res.status(404).json({ message: "Can't update" });
+      return;
+  }
+  res.status(404).json(blogUpdate);
+} catch (err) {
+    
+res.status(500).json(err);
+
+  }
+})
 
 router.delete('/:id', withAuth, async (req, res) => {
     try {
@@ -36,6 +57,8 @@ router.delete('/:id', withAuth, async (req, res) => {
   
     }
 });
+
+
 
 module.exports = router;
 

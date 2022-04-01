@@ -14,6 +14,7 @@ router.get('/', async (req, res) => {
     });
 
 const blogs = blogData.map((blog) => blog.get({ plain: true }));
+console.log(blogs)
 
     res.render('homepage', {
         blogs,
@@ -76,6 +77,18 @@ router.get('/blog/:id', async (req, res) => {
   
     res.render('login');
   });
+
+
+  router.get('/signup', (req, res) => {
+ 
+    if (req.session.logged_in) {
+      res.redirect('/profile');
+      return;
+    }
+  
+    res.render('signup');
+  });
+
   
   module.exports = router;
 
